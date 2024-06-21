@@ -568,7 +568,7 @@ class FreeplayState extends MusicBeatState
 	private function positionHighscore()
 	{
 		scoreText.x = FlxG.width/2 - scoreText.width/2;
-		diffText.x = scoreText.width/2 - diffText.width/2;
+		diffText.x = FlxG.width/2 - diffText.width/2;
 	}
 
 	var _drawDistance:Int = 4;
