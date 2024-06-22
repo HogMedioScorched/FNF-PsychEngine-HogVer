@@ -119,6 +119,13 @@ class VisualsSettingsSubState extends BaseOptionsMenu
 			BOOL);
 		addOption(option);
 		option.onChange = onChangeFPSCounter;
+
+		var option:Option = new Option('Time Bar:',
+			"What should the Score Text display?",
+			'scoreType',
+			STRING,
+			['Psych', 'Kade', 'Vanilla', 'Disabled']);
+		addOption(option);
 		
 		var option:Option = new Option('Pause Screen Song:',
 			"Which song do you prefer for the Pause Screen?",
@@ -153,6 +160,18 @@ class VisualsSettingsSubState extends BaseOptionsMenu
 		var option:Option = new Option('Combo Stacking',
 			"If unchecked, Ratings and Combo won't stack, saving on System Memory and easier to read",
 			'comboStacking',
+			BOOL);
+		addOption(option);
+
+		var option:Option = new Option('Combo on Stage',
+			"If checked, Ratings and Combo will show on Stage.",
+			'ratingOnStage',
+			BOOL);
+		addOption(option);
+
+		var option:Option = new Option('Pitched Song',
+			"Wanna pitch change on modifing playback rate?",
+			'pitched',
 			BOOL);
 		addOption(option);
 
