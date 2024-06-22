@@ -563,7 +563,11 @@ class PlayState extends MusicBeatState
 
 		uiGroup.cameras = [camHUD];
 		noteGroup.cameras = [camHUD];
-		comboGroup.cameras = [camHUD];
+        if (ClientPrefs.ratingOnStage) {
+		    comboGroup.cameras = [camGame];
+        } else {
+            comboGroup.cameras = [camHUD];
+        }
 
 		startingSong = true;
 
@@ -664,10 +668,12 @@ class PlayState extends MusicBeatState
 		#if FLX_PITCH
 		if(generatedMusic)
 		{
+            if (ClientPrefs.pitched) {
 			vocals.pitch = value;
 			opponentVocals.pitch = value;
 			FlxG.sound.music.pitch = value;
-
+            }
+            
 			var ratio:Float = playbackRate / value; //funny word huh
 			if(ratio != 1)
 			{
@@ -1189,17 +1195,21 @@ class PlayState extends MusicBeatState
 		opponentVocals.pause();
 
 		FlxG.sound.music.time = time;
+        if (ClientPrefs.pitched) {
 		#if FLX_PITCH FlxG.sound.music.pitch = playbackRate; #end
+        }
 		FlxG.sound.music.play();
 
 		if (Conductor.songPosition <= vocals.length)
 		{
 			vocals.time = time;
 			opponentVocals.time = time;
+            if (ClientPrefs.pitched) {
 			#if FLX_PITCH
 			vocals.pitch = playbackRate;
 			opponentVocals.pitch = playbackRate;
 			#end
+            }
 		}
 		vocals.play();
 		opponentVocals.play();
@@ -1221,7 +1231,9 @@ class PlayState extends MusicBeatState
 
 		@:privateAccess
 		FlxG.sound.playMusic(inst._sound, 1, false);
+        if (ClientPrefs.pitched) {
 		#if FLX_PITCH FlxG.sound.music.pitch = playbackRate; #end
+        }
 		FlxG.sound.music.onComplete = () -> finishSong();
 		vocals.play();
 		opponentVocals.play();
@@ -1283,11 +1295,12 @@ class PlayState extends MusicBeatState
 				if(oppVocals != null && oppVocals.length > 0) opponentVocals.loadEmbedded(oppVocals);
 			}
 		}
-
+        if (ClientPrefs.pitched) {
 		#if FLX_PITCH
 		vocals.pitch = playbackRate;
 		opponentVocals.pitch = playbackRate;
 		#end
+        }
 		FlxG.sound.list.add(vocals);
 		FlxG.sound.list.add(opponentVocals);
 
@@ -1609,7 +1622,9 @@ class PlayState extends MusicBeatState
 		trace('resynced vocals at ' + Math.floor(Conductor.songPosition));
 
 		FlxG.sound.music.play();
+		if (ClientPrefs.pitched) {
 		#if FLX_PITCH FlxG.sound.music.pitch = playbackRate; #end
+		}
 		Conductor.songPosition = FlxG.sound.music.time;
 
 		var checkVocals = [vocals, opponentVocals];
@@ -1618,7 +1633,9 @@ class PlayState extends MusicBeatState
 			if (Conductor.songPosition <= vocals.length)
 			{
 				voc.time = Conductor.songPosition;
+                if (ClientPrefs.pitched) {
 				#if FLX_PITCH voc.pitch = playbackRate; #end
+                }
 				voc.play();
 			}
 	
@@ -3072,7 +3089,9 @@ class PlayState extends MusicBeatState
 		FlxG.stage.removeEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
 		FlxG.stage.removeEventListener(KeyboardEvent.KEY_UP, onKeyRelease);
 		FlxG.animationTimeScale = 1;
+        if (ClientPrefs.pitched) {
 		#if FLX_PITCH FlxG.sound.music.pitch = 1; #end
+        }
 		Note.globalRgbShaders = [];
 		backend.NoteTypesConfig.clearNoteTypesData();
 		instance = null;
