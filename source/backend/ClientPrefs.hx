@@ -18,6 +18,9 @@ import states.TitleState;
 	public var storageType:String = "EXTERNAL_DATA";
 	#end
 	public var hitboxType:String = "Gradient";
+	public var ratingOnStage:Bool = false;
+	public var pitched:Bool = false;
+	public var scoreType:String = "Psych";
 	public var popUpRating:Bool = true;
 	public var downScroll:Bool = false;
 	public var middleScroll:Bool = false;
