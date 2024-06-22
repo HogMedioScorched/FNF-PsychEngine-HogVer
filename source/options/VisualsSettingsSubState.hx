@@ -84,6 +84,13 @@ class VisualsSettingsSubState extends BaseOptionsMenu
 			['Time Left', 'Time Elapsed', 'Song Name', 'Disabled']);
 		addOption(option);
 
+		var option:Option = new Option('Score Text Style:',
+			"What should the Score Text display?",
+			'scoreType',
+			STRING,
+			['Psych', 'Kade', 'Vanilla', 'Disabled']);
+		addOption(option);
+
 		var option:Option = new Option('Flashing Lights',
 			"Uncheck this if you're sensitive to flashing lights!",
 			'flashing',
@@ -119,13 +126,6 @@ class VisualsSettingsSubState extends BaseOptionsMenu
 			BOOL);
 		addOption(option);
 		option.onChange = onChangeFPSCounter;
-
-		var option:Option = new Option('Time Bar:',
-			"What should the Score Text display?",
-			'scoreType',
-			STRING,
-			['Psych', 'Kade', 'Vanilla', 'Disabled']);
-		addOption(option);
 		
 		var option:Option = new Option('Pause Screen Song:',
 			"Which song do you prefer for the Pause Screen?",
@@ -166,12 +166,6 @@ class VisualsSettingsSubState extends BaseOptionsMenu
 		var option:Option = new Option('Combo on Stage',
 			"If checked, Ratings and Combo will show on Stage.",
 			'ratingOnStage',
-			BOOL);
-		addOption(option);
-
-		var option:Option = new Option('Pitched Song',
-			"Wanna pitch change on modifing playback rate?",
-			'pitched',
 			BOOL);
 		addOption(option);
 
