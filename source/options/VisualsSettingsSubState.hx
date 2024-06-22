@@ -128,7 +128,7 @@ class VisualsSettingsSubState extends BaseOptionsMenu
 		addOption(option);
 		option.onChange = onChangePauseMusic;
 		
-		var option:Option = new Option('Pitch',
+		var option:Option = new Option('Pitched Song',
 			"Wanna pitch change on modifing playback rate?",
 			'pitched',
 			BOOL);
