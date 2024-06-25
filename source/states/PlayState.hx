@@ -563,7 +563,7 @@ class PlayState extends MusicBeatState
 
 		uiGroup.cameras = [camHUD];
 		noteGroup.cameras = [camHUD];
-        if (ClientPrefs.ratingOnStage) {
+        if (ClientPrefs.data.ratingOnStage) {
 		    comboGroup.cameras = [camGame];
         } else {
             comboGroup.cameras = [camHUD];
@@ -668,7 +668,7 @@ class PlayState extends MusicBeatState
 		#if FLX_PITCH
 		if(generatedMusic)
 		{
-            if (ClientPrefs.pitched) {
+            if (ClientPrefs.data.pitched) {
 			vocals.pitch = value;
 			opponentVocals.pitch = value;
 			FlxG.sound.music.pitch = value;
@@ -1195,7 +1195,7 @@ class PlayState extends MusicBeatState
 		opponentVocals.pause();
 
 		FlxG.sound.music.time = time;
-        if (ClientPrefs.pitched) {
+        if (ClientPrefs.data.pitched) {
 		#if FLX_PITCH FlxG.sound.music.pitch = playbackRate; #end
         }
 		FlxG.sound.music.play();
@@ -1204,7 +1204,7 @@ class PlayState extends MusicBeatState
 		{
 			vocals.time = time;
 			opponentVocals.time = time;
-            if (ClientPrefs.pitched) {
+            if (ClientPrefs.data.pitched) {
 			#if FLX_PITCH
 			vocals.pitch = playbackRate;
 			opponentVocals.pitch = playbackRate;
@@ -1231,7 +1231,7 @@ class PlayState extends MusicBeatState
 
 		@:privateAccess
 		FlxG.sound.playMusic(inst._sound, 1, false);
-        if (ClientPrefs.pitched) {
+        if (ClientPrefs.data.pitched) {
 		#if FLX_PITCH FlxG.sound.music.pitch = playbackRate; #end
         }
 		FlxG.sound.music.onComplete = () -> finishSong();
@@ -1295,7 +1295,7 @@ class PlayState extends MusicBeatState
 				if(oppVocals != null && oppVocals.length > 0) opponentVocals.loadEmbedded(oppVocals);
 			}
 		}
-        if (ClientPrefs.pitched) {
+        if (ClientPrefs.data.pitched) {
 		#if FLX_PITCH
 		vocals.pitch = playbackRate;
 		opponentVocals.pitch = playbackRate;
@@ -1622,7 +1622,7 @@ class PlayState extends MusicBeatState
 		trace('resynced vocals at ' + Math.floor(Conductor.songPosition));
 
 		FlxG.sound.music.play();
-		if (ClientPrefs.pitched) {
+		if (ClientPrefs.data.pitched) {
 		#if FLX_PITCH FlxG.sound.music.pitch = playbackRate; #end
 		}
 		Conductor.songPosition = FlxG.sound.music.time;
@@ -1633,7 +1633,7 @@ class PlayState extends MusicBeatState
 			if (Conductor.songPosition <= vocals.length)
 			{
 				voc.time = Conductor.songPosition;
-                if (ClientPrefs.pitched) {
+                if (ClientPrefs.data.pitched) {
 				#if FLX_PITCH voc.pitch = playbackRate; #end
                 }
 				voc.play();
@@ -3089,7 +3089,7 @@ class PlayState extends MusicBeatState
 		FlxG.stage.removeEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
 		FlxG.stage.removeEventListener(KeyboardEvent.KEY_UP, onKeyRelease);
 		FlxG.animationTimeScale = 1;
-        if (ClientPrefs.pitched) {
+        if (ClientPrefs.data.pitched) {
 		#if FLX_PITCH FlxG.sound.music.pitch = 1; #end
         }
 		Note.globalRgbShaders = [];
@@ -3662,3 +3662,4 @@ class PlayState extends MusicBeatState
 		return false;
 	}
 }
+p
