@@ -110,7 +110,7 @@ class ResetScoreSubState extends MusicBeatSubstate
 			}
 			FlxG.sound.play(Paths.sound('cancelMenu'), 1);
 			ClientPrefs.saveSettings();
-                        controls.isInSubstate = false;
+			controls.isInSubstate = false;
 			close();
 		}
 		if (virtualPad == null){ //sometimes it dosent add the vpad, hopefully this fixes it

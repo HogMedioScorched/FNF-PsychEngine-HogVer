@@ -312,7 +312,7 @@ class ResetAchievementSubstate extends MusicBeatSubstate
 		if(controls.BACK)
 		{
 			close();
-                        controls.isInSubstate = false;
+            controls.isInSubstate = false;
 			FlxG.sound.play(Paths.sound('cancelMenu'));
 			return;
 		}
@@ -353,7 +353,7 @@ class ResetAchievementSubstate extends MusicBeatSubstate
 
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 			}
-                        controls.isInSubstate = false;
+			controls.isInSubstate = false;
 			close();
 			return;
 		}

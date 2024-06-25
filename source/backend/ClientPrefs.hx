@@ -7,7 +7,7 @@ import states.TitleState;
 
 // Add a variable here and it will get automatically saved
 @:structInit class SaveVariables {
-    // Mobile and Mobile Controls Releated
+	// Mobile and Mobile Controls Releated
 	public var extraButtons:String = "NONE"; // mobile extra button option
 	public var hitbox2:Bool = true; // hitbox extra button position option
 	public var dynamicColors:Bool = true; // yes cause its cool -Karim
@@ -22,6 +22,7 @@ import states.TitleState;
 	public var pitched:Bool = false;
 	public var scoreType:String = "Psych";
 	public var popUpRating:Bool = true;
+
 	public var downScroll:Bool = false;
 	public var middleScroll:Bool = false;
 	public var opponentStrums:Bool = true;

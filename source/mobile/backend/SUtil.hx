@@ -30,11 +30,11 @@ class SUtil
 		if (!FileSystem.exists(rootDir + 'storagetype.txt'))
 			File.saveContent(rootDir + 'storagetype.txt', ClientPrefs.data.storageType);
 		var curStorageType:String = File.getContent(rootDir + 'storagetype.txt');
-		if(curStorageType == "CUSTOM" && selectedDir == null)
-		{
-			initSAFCallback();
-			Tools.openDirectoryPicker(5);
-		}
+		// if(curStorageType == "CUSTOM" && selectedDir == null)
+		// {
+		// 	initSAFCallback();
+		// 	Tools.openDirectoryPicker(5);
+		// }
 		daPath = force ? StorageType.fromStrForce(curStorageType) : StorageType.fromStr(curStorageType);
 		daPath = Path.addTrailingSlash(daPath);
 		#elseif ios
@@ -133,33 +133,33 @@ class SUtil
 		return daPath;
 	}
 	
-	public static function initSAFCallback():Void
-	{
-		CallBack.init();
-		CallBack.onActivityResult.add((data:Dynamic) -> {
-			if(data == null) throw new Exception('Failed to retrive the activity data.');
-			// default request code for SAF directory picker is 5
-			if(data.requestCode == 5)
-			{
-				var uri:String = data.uri;
+	// public static function initSAFCallback():Void
+	// {
+	// 	CallBack.init();
+	// 	CallBack.onActivityResult.add((data:Dynamic) -> {
+	// 		if(data == null) throw new Exception('Failed to retrive the activity data.');
+	// 		// default request code for SAF directory picker is 5
+	// 		if(data.requestCode == 5)
+	// 		{
+	// 			var uri:String = data.uri;
 
-				if(uri == null) throw new Exception('Failed to retrive the activity Uri.');
+	// 			if(uri == null) throw new Exception('Failed to retrive the activity Uri.');
 
-				// allows access for the path
-				Tools.registerUriAccess(uri);
+	// 			// allows access for the path
+	// 			Tools.registerUriAccess(uri);
 
-				var path:String = Path.addTrailingSlash(Tools.getUriPath(uri));
+	// 			var path:String = Path.addTrailingSlash(Tools.getUriPath(uri));
 				
-				// clear the prev
-				var saveFilePath = rootDir + 'curCWD.txt';
-				if(FileSystem.exists(saveFilePath))
-					FileSystem.deleteFile(saveFilePath);
+	// 			// clear the prev
+	// 			var saveFilePath = rootDir + 'curCWD.txt';
+	// 			if(FileSystem.exists(saveFilePath))
+	// 				FileSystem.deleteFile(saveFilePath);
 
-				// saves the selected directory
-				File.saveContent(saveFilePath, path);
-			}
-		}, true); // true is to make this function execute only once
-	}
+	// 			// saves the selected directory
+	// 			File.saveContent(saveFilePath, path);
+	// 		}
+	// 	}, true); // true is to make this function execute only once
+	// }
 
 	@:noCompletion
 	public static function get_selectedDir():Null<String>

@@ -84,10 +84,10 @@ class MusicBeatSubstate extends FlxSubState
 			virtualPad = null;
 		}
 		if (mobileControls != null)
-			{
-				mobileControls = FlxDestroyUtil.destroy(mobileControls);
-				mobileControls = null;
-			}
+		{
+			mobileControls = FlxDestroyUtil.destroy(mobileControls);
+			mobileControls = null;
+		}
 	}
 
 	override function update(elapsed:Float)

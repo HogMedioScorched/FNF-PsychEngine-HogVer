@@ -48,8 +48,6 @@ class NotesSubState extends MusicBeatSubstate
 	var tipTxt:FlxText;
 
 	public function new() {
-                controls.isInSubstate = true;
-
 		super();
 		
 		#if DISCORD_ALLOWED
@@ -188,8 +186,9 @@ class NotesSubState extends MusicBeatSubstate
 		controllerPointer.visible = controls.controllerMode;
 		_lastControllerMode = controls.controllerMode;
 
-        addVirtualPad('NONE', 'B_C');
-        virtualPad.buttonB.x = FlxG.width - 132;
+		addVirtualPad('NONE', 'B_C');
+		controls.isInSubstate = true;
+		virtualPad.buttonB.x = FlxG.width - 132;
 		virtualPad.buttonC.x = 0;
 		virtualPad.buttonC.y = FlxG.height - 135;
 	}
@@ -214,7 +213,7 @@ class NotesSubState extends MusicBeatSubstate
 			FlxG.mouse.visible = false;
 			FlxG.sound.play(Paths.sound('cancelMenu'));
 			ClientPrefs.saveSettings();
-                        controls.isInSubstate = false;
+			controls.isInSubstate = false;
 			close();
 			return;
 		}
@@ -663,7 +662,7 @@ class NotesSubState extends MusicBeatSubstate
 			Note.initializeGlobalRGBShader(i);
 			var newNote:StrumNote = new StrumNote(150 + (480 / dataArray.length * i), 200, i, 0);
 			newNote.setGraphicSize(102);
-                        newNote.useRGBShader = true;
+			newNote.useRGBShader = true;
 			newNote.updateHitbox();
 			newNote.ID = i;
 			myNotes.add(newNote);
