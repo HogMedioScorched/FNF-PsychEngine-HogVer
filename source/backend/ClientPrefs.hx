@@ -19,7 +19,7 @@ import states.TitleState;
 	#end
 	public var hitboxType:String = "Gradient";
 	public var ratingOnStage:Bool = false;
-	public var pitched:Bool = false;
+	public var pitched:Bool = true;
 	public var scoreType:String = "Psych";
 	public var popUpRating:Bool = true;
 
